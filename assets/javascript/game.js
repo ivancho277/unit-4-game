@@ -1,4 +1,4 @@
-$(document).ready(function) {
+$(document).ready(function() {
 
 let characters = {
     "geralt" : {
@@ -22,7 +22,7 @@ let characters = {
         counterAttack: 20,
         imageUrl: "assets/images/ciri.jpg"
     },
-    imlerith : {
+    "imlerith" : {
         name: "imlerith",
         health: 180,
         attack: 7,
@@ -32,6 +32,7 @@ let characters = {
 };
 
 
+//audio variables
 
 
 
@@ -40,4 +41,5 @@ let characters = {
 
 
 
-}
+
+});
