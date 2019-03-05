@@ -1,0 +1,26 @@
+
+body { 
+    background: url(../images/KaerMorhen.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+img  {
+    width: 250px;
+    height: 200px;
+    padding: 5px;
+    border-width: 5px;
+    border-color: greenyellow;
+    border-style: solid;
+    
+
+}
+
+h1 {
+    background-color: white;
+}
+h2 {
+    color: white;
+}
