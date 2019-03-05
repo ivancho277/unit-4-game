@@ -32,14 +32,21 @@ let characters = {
 };
 
 //audio variables
-
+let geraltImg = document.getElementById('geralt-img');
 let attackSound = new Audio('assets/sound/SwordsCollide.mp3');
-let deathSound = new Audio('assets/sounds/Decapitation');
-let winningSound = new Audio('assets/sounds/TaDa')
+let deathSound = new Audio('assets/sound/Decapitation.mp3');
+let winningSound = new Audio('assets/sound/TaDa.mp3');
+
+$("#geralt-img").click(function (e) { 
+    console.log("clicked geralt!")
+    attackSound.play();
+    
+});
 
 
 
-//render character block
+
+
 
 
 
