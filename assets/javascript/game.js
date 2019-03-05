@@ -35,6 +35,11 @@ let characters = {
 
 let attackSound = new Audio('assets/sound/SwordsCollide.mp3');
 let deathSound = new Audio('assets/sounds/Decapitation');
+let winningSound = new Audio('assets/sounds/TaDa')
+
+
+
+//render character block
 
 
 
