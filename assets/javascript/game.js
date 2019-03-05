@@ -31,8 +31,12 @@ let characters = {
     }
 };
 
-
 //audio variables
+
+let attackSound = new Audio('assets/sound/SwordsCollide.mp3');
+let deathSound = new Audio('assets/sounds/Decapitation');
+
+
 
 
 
