@@ -35,11 +35,15 @@ let characters = {
     }
 };
 
+
+
 //audio variables
 let geraltImg = document.getElementById('geralt-img');
 let attackSound = new Audio('assets/sound/SwordsCollide.mp3');
 let deathSound = new Audio('assets/sound/Decapitation.mp3');
 let winningSound = new Audio('assets/sound/TaDa.mp3');
+
+
 
 
 
@@ -52,20 +56,42 @@ $(function () {
 function onImgClick(){
     $("img").click(function() {
         console.log("image clicked");
-        attackSound.play();
+        console.log(characters);
+        attackSound.play();      
     })
 }
 
+$("img").hover
+
+
 $("#geralt-img").click(function (e) { 
     console.log("clicked geralt!");
-    characters.isSelected = true;
+    characters.geralt.isSelected = true;
+    onImgClick();
+});
+
+$("#ciri-img").click(function (e) { 
+    console.log("clicked ciri!");
+    characters.ciri.isSelected = true;
+    onImgClick();
+});
+$("#vesemir-img").click(function (e) { 
+    console.log("clicked vesemir!");
+    characters.vesemir.isSelected = true;
+    onImgClick();
+});
+$("#imlerith-img").click(function (e) { 
+    console.log("clicked imlerith!");
+    characters.imlerith.isSelected = true;
     onImgClick();
 });
 
 
-
-
-
+// function checkIfcharacterIsChosen(characters) {
+// if(characters.isSelected === true) {
+//     $("#opponents").html(<img src= />)
+// }
+// {
 
 
 
