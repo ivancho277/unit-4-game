@@ -57,11 +57,12 @@ function onImgClick(){
     $("img").click(function() {
         console.log("image clicked");
         console.log(characters);
-        attackSound.play();      
+        attackSound.play();    
+       
     })
 }
 
-$("img").hover
+
 
 
 $("#geralt-img").click(function (e) { 
@@ -87,9 +88,9 @@ $("#imlerith-img").click(function (e) {
 });
 
 
-// function checkIfcharacterIsChosen(characters) {
-// if(characters.isSelected === true) {
-//     $("#opponents").html(<img src= />)
+// function checkIfcharacterIsChosen() {
+// if(characters.isSelected === false) {
+//     $("#opponents").html("<img src='" + characters.imageUrl + "' />")
 // }
 // {
 
