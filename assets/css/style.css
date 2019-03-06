@@ -10,10 +10,11 @@ body {
 img  {
     width: 250px;
     height: 200px;
-    padding: 5px;
-    border-width: 5px;
-    border-color: greenyellow;
+    /* padding: 5px; */
+    /* border-width: 5px;
     border-style: solid;
+    border-color: greenyellow; */
+    border: 5px solid red;
     
 
 }
