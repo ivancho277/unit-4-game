@@ -68,31 +68,38 @@ function onImgClick(){
 $("#geralt-img").click(function (e) { 
     console.log("clicked geralt!");
     characters.geralt.isSelected = true;
+    if(characters.geralt.isSelected) {
+        $("#opponents").html("<img src='assets/images/geralt.jpg' />");
+        $("#geralt-img").html();
+        }
     onImgClick();
 });
 
 $("#ciri-img").click(function (e) { 
     console.log("clicked ciri!");
     characters.ciri.isSelected = true;
+   // checkIfcharacterIsChosen(characters.ciri);
     onImgClick();
 });
 $("#vesemir-img").click(function (e) { 
     console.log("clicked vesemir!");
     characters.vesemir.isSelected = true;
+   // checkIfcharacterIsChosen(characters.vesemir);
     onImgClick();
 });
 $("#imlerith-img").click(function (e) { 
     console.log("clicked imlerith!");
     characters.imlerith.isSelected = true;
+    //checkIfcharacterIsChosen(characters.imlerith);
     onImgClick();
 });
 
 
-// function checkIfcharacterIsChosen() {
-// if(characters.isSelected === false) {
+// // function checkIfcharacterIsChosen(characters) {
+// if(characters.isSelected) {
 //     $("#opponents").html("<img src='" + characters.imageUrl + "' />")
-// }
-// {
+//     }
+// // {
 
 
 
