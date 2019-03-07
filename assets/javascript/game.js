@@ -70,7 +70,7 @@ $("#geralt-img").click(function (e) {
     console.log("clicked geralt!");
     characters.geralt.isSelected = true;
     if(characters.geralt.isSelected) {
-        $("#opponents").html("<img id='selected-character-id' src='" + characters.geralt.imageUrl+"' />");
+        $("#selected-character-id").html("<img id='selected-character-id' src='" + characters.geralt.imageUrl+"' />");
         $("#geralt-img").hide();
         }
     onImgClick();
@@ -81,7 +81,7 @@ $("#ciri-img").click(function (e) {
     characters.ciri.isSelected = true;
    // checkIfcharacterIsChosen(characters.ciri);
     if(characters.ciri.isSelected) {
-        $("#opponents").html("<img src='" + characters.ciri.imageUrl+"' />");
+        $("#selected-character-id").html("<img src='" + characters.ciri.imageUrl+"' />");
         $("#ciri-img").hide();
         }
     onImgClick();
@@ -89,13 +89,21 @@ $("#ciri-img").click(function (e) {
 $("#vesemir-img").click(function (e) { 
     console.log("clicked vesemir!");
     characters.vesemir.isSelected = true;
-   // checkIfcharacterIsChosen(characters.vesemir);
+    if(characters.vesemir.isSelected) {
+        $("#selected-character-id").html("<img id='selected-character-id' src='" + characters.vesemir.imageUrl+"' />");
+        $("#vesemir-img").hide();
+        }
+   
     onImgClick();
 });
 $("#imlerith-img").click(function (e) { 
     console.log("clicked imlerith!");
     characters.imlerith.isSelected = true;
-    //checkIfcharacterIsChosen(characters.imlerith);
+    if(characters.imlerith.isSelected) {
+        $("#selected-character-id").html("<img id='selected-character-id' src='" + characters.imlerith.imageUrl+"' />");
+        $("#imlerith-img").hide();
+        }
+   
     onImgClick();
 });
 
