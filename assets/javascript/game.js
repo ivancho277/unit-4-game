@@ -56,7 +56,7 @@ $ (document).ready (function () {
       );
     }
   }
-
+  //function call
   sendImgStats ();
   //audio variables
   let geraltImg = document.getElementById ('geralt-img');
@@ -64,29 +64,34 @@ $ (document).ready (function () {
   let deathSound = new Audio ('assets/sound/Decapitation.mp3');
   let winningSound = new Audio ('assets/sound/TaDa.mp3');
 
+  // function to change image border (not invoked anywhere) 
   function changeImageBorder () {
     $ ('#selected-character-id').click (function () {
       $ (this).css ('border', 'solid 5px greenyellow');
     });
   }
-
+   // where Players character will fight defending character
   function fightSequence (characterChosen, characterDefender) {
     var playersCharacter = Object.assign ({}, characterChosen);
     var computersCharacter = Object.assign ({}, characterDefender);
   }
 
+  //on an image click play sound and make border
   function onImgClick () {
-    $ ('.img-wrap').click (function () {
+    $ ('.img-wrap').one ("click",function (e) {
       console.log ('image clicked');
       console.log (characters);
       attackSound.play ();
       $ ('#selected-character-id').css ('border', 'solid 5px greenyellow');
+      $(this).off(e);
     });
   }
 
 
+  //returns what character is selected and hids the original picture while moving to a new id element on the page.
+  //
   function whatCharacterIsClicked () {
-    $ ('#stats0, #stats1, #stats2, #stats3').click (function (e) {
+    $ ('#stats0, #stats1, #stats2, #stats3').one ("click", function (e) {
       if (this.id === 'stats0') {
         console.log ('clicked geralt!');
         characters.geralt.isSelected = true;
@@ -98,9 +103,11 @@ $ (document).ready (function () {
           );
           $ ('#geralt-wrap').hide ();
           $ ('.character-text').hide ();
+          
           //$('geralt-img').hide();
         }
         onImgClick ();
+        return characters.geralt;
       } else if (this.id === 'stats1') {
         console.log ('clicked ciri!');
         characters.ciri.isSelected = true;
@@ -111,8 +118,10 @@ $ (document).ready (function () {
           );
           $ ('#ciri-wrap').hide ();
           $ ('.character-text').hide ();
+          
         }
         onImgClick ();
+        return characters.ciri;
       } else if (this.id === 'stats2') {
         console.log ('clicked imleith!');
         characters.imlerith.isSelected = true;
@@ -124,9 +133,11 @@ $ (document).ready (function () {
           );
           $ ('#imlerith-wrap').hide ();
           $ ('.character-text').hide ();
+          
         }
 
         onImgClick ();
+        return characters.imlerith;
       } else if (this.id === 'stats3') {
         console.log ('clicked vesemir!');
         characters.vesemir.isSelected = true;
@@ -138,15 +149,22 @@ $ (document).ready (function () {
           );
           $ ('#vesemir-wrap').hide ();
           $ ('.character-text').hide ();
+          
         }
 
         onImgClick ();
+        return characters.vesemir;
       }
+      else
+      $(this).off(e);
+      return;
     });
   }
 
-  
-
+  //atempt to only call function once when needed.
+  if(!characters.geralt.isSelected && !characters.ciri.isSelected && !characters.vesemir.isSelected && !characters.imlerith.isSelected){
+  console.log(whatCharacterIsClicked());
+  }
   // // function checkIfcharacterIsChosen(characters) {
   // if(characters.isSelected) {
   //     $("#opponents").html("<img src='" + characters.imageUrl + "' />")
