@@ -57,41 +57,55 @@ $ (document).ready (function () {
     }
   }
   //function call
-  sendImgStats ("#stats");
+  sendImgStats ('#stats');
   //audio variables
   let geraltImg = document.getElementById ('geralt-img');
   let attackSound = new Audio ('assets/sound/SwordsCollide.mp3');
   let deathSound = new Audio ('assets/sound/Decapitation.mp3');
   let winningSound = new Audio ('assets/sound/TaDa.mp3');
 
-  // function to change image border (not invoked anywhere) 
+  // function to change image border (not invoked anywhere)
   function changeImageBorder () {
     $ ('#selected-character-id').click (function () {
       $ (this).css ('border', 'solid 5px greenyellow');
     });
   }
-   // where Players character will fight defending character
+  // where Players character will fight defending character
   function fightSequence (characterChosen, characterDefender) {
     var playersCharacter = Object.assign ({}, characterChosen);
     var computersCharacter = Object.assign ({}, characterDefender);
+
+    //>1. print Health and Attack to jumbotron <p>
+    //>2. when attack is clicked
+    //>3. playersCharacter.health - computersCharacter.CounterAttack: computersCharacter.health - playersCharacter.attack
+    //>4. playersCharacter.attack += playersCharacter.attack
+    //>5. check to see if each have 0 health with checkIfDead()
+    //>6. if playersCharacter is dead <you loose!>, if computersCharacter is dead > check to see if any characters still left, if not you win! IF yes update screen by starting form >1. (will most likely have to be called again with new computersCharacter parameter)
+  }
+  //will check if characters Health is 0, if it is return true else return false
+  function checkIfDead (character) {
+    //check if dead, play death sound
+    if(character.health <= 0){
+        deathSound.play();
+        return true;
+    }
+    else {return false}
   }
 
   //on an image click play sound and make border
   function onImgClick () {
-    $ ('.img-wrap').one ("click",function (e) {
+    $ ('.img-wrap').one ('click', function (e) {
       console.log ('image clicked');
       console.log (characters);
       attackSound.play ();
       $ ('#selected-character-id').css ('border', 'solid 5px greenyellow');
-      $(this).off(e);
+      $ (this).off (e);
     });
   }
 
-
-
   //returns what character is selected and hids the original picture while moving to a new id element on the page.
   function whatCharacterIsClicked () {
-    $ ('#stats0, #stats1, #stats2, #stats3').on ("click", function (e) {
+    $ ('#stats0, #stats1, #stats2, #stats3').one ('click', function (e) {
       if (this.id === 'stats0') {
         console.log ('clicked geralt!');
         characters.geralt.isSelected = true;
@@ -101,11 +115,13 @@ $ (document).ready (function () {
               characters.geralt.imageUrl +
               "' />"
           );
-          $('#attack-btn').html("<button type='button' class='btn btn-primary btn-lg'>Attack</button>")
-          $('#main-actions').text("You chose Geralt!");
+          $ ('#attack-btn').html (
+            "<button type='button' id='attack' class='btn btn-primary btn-lg'>Attack</button>"
+          );
+          $ ('#main-actions').text ('You chose Geralt!');
           $ ('#geralt-wrap').hide ();
           $ ('.character-text').hide ();
-          
+
           //$('geralt-img').hide();
         }
         onImgClick ();
@@ -118,11 +134,12 @@ $ (document).ready (function () {
           $ ('#selected-character-id').html (
             "<img src='" + characters.ciri.imageUrl + "' />"
           );
-          $('#attack-btn').html("<button type='button' class='btn btn-primary btn-lg'>Attack</button>")
-          $('#main-actions').text("You chose Ciri!");
+          $ ('#attack-btn').html (
+            "<button type='button' id='attack' class='btn btn-primary btn-lg'>Attack</button>"
+          );
+          $ ('#main-actions').text ('You chose Ciri!');
           $ ('#ciri-wrap').hide ();
           $ ('.character-text').hide ();
-          
         }
         onImgClick ();
         return characters.ciri;
@@ -135,11 +152,12 @@ $ (document).ready (function () {
               characters.imlerith.imageUrl +
               "' />"
           );
-          $('#attack-btn').html("<button type='button' class='btn btn-primary btn-lg'>Attack</button>")
-          $('#main-actions').text("You chose Imlerith!");
+          $ ('#attack-btn').html (
+            "<button type='button' id='attack' class='btn btn-primary btn-lg'>Attack</button>"
+          );
+          $ ('#main-actions').text ('You chose Imlerith!');
           $ ('#imlerith-wrap').hide ();
           $ ('.character-text').hide ();
-          
         }
 
         onImgClick ();
@@ -153,26 +171,24 @@ $ (document).ready (function () {
               characters.vesemir.imageUrl +
               "' />"
           );
-          $('#attack-btn').html("<button type='button' class='btn btn-primary btn-lg'>Attack</button>")
-          $('#main-actions').text("You chose Vesemir!");
+          $ ('#attack-btn').html (
+            "<button type='button' id='attack' class='btn btn-primary btn-lg'>Attack</button>"
+          );
+          $ ('#main-actions').text ('You chose Vesemir!');
           $ ('#vesemir-wrap').hide ();
           $ ('.character-text').hide ();
-          
         }
 
         onImgClick ();
         return characters.vesemir;
-      }
-      else
-      return;
+      } else return;
     });
   }
 
-  //atempt to only call function once when needed.
- 
-  
-  console.log("The chosen one IS: ", whatCharacterIsClicked());
-  
+  //atempt to only call function once when needed. WHY DO MY ONCLICK EVENTS KEEP BEING LISTENED FOR!
+var chosenone = $('body').on("click",whatCharacterIsClicked);
+  console.log ('The chosen one IS: ', chosenone);
+
   // // function checkIfcharacterIsChosen(characters) {
   // if(characters.isSelected) {
   //     $("#opponents").html("<img src='" + characters.imageUrl + "' />")
