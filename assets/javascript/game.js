@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 let characters = {
     "geralt" : {
-        name: "geralt",
+        name: "Geralt",
         health: 120,
         attack: 8,
         counterAttack: 15,
@@ -10,7 +10,7 @@ let characters = {
         isSelected: false
     },
     "vesemir" : {
-        name: "vesemir",
+        name: "Vesemir",
         health: 100,
         attack: 14,
         counterAttack: 5,
@@ -18,7 +18,7 @@ let characters = {
         isSelected: false
     },
     "ciri" : {
-        name: "ciri",
+        name: "Ciri",
         health: 150,
         attack: 8,
         counterAttack: 20,
@@ -26,7 +26,7 @@ let characters = {
         isSelected: false
     },
     "imlerith" : {
-        name: "imlerith",
+        name: "Imlerith",
         health: 180,
         attack: 7,
         counterAttack: 20,
@@ -36,8 +36,15 @@ let characters = {
 };
 
 
+//send stats to images
+function sendImgStats() {
+    characterArray = [characters.geralt, characters.ciri, characters.imlerith, characters.vesemir];
+    for(var i = 0; i < characterArray.length; i++ ){    
+        $("#stats"+i).html("<p>" + characterArray[i].name + "<br> Health: " + characterArray[i].health + "<br> Attack: " + characterArray[i].attack + "<br> CounterAttack: " + characterArray[i].counterAttack + "</p>") 
+    }
+}
 
-
+sendImgStats();
 //audio variables
 let geraltImg = document.getElementById('geralt-img');
 let attackSound = new Audio('assets/sound/SwordsCollide.mp3');
@@ -48,17 +55,18 @@ let winningSound = new Audio('assets/sound/TaDa.mp3');
 
 
 
-function changeImageBorder(CharacterString) {
-    $("#"+ CharacterString +"img").click(function() {
+function changeImageBorder() {
+    $("#selected-character-id").click(function() {
       $(this).css('border', "solid 5px greenyellow");  
     });
 }
 
 function onImgClick(){
-    $("img").click(function() {
+    $(".img-wrap").click(function() {
         console.log("image clicked");
         console.log(characters);
-        attackSound.play();    
+        attackSound.play();   
+        $("#selected-character-id").css('border', "solid 5px greenyellow");  
        
     })
 }
@@ -66,7 +74,7 @@ function onImgClick(){
 
 
 
-$("#geralt-img").click(function (e) { 
+$("#stats0").click(function (e) { 
     console.log("clicked geralt!");
     characters.geralt.isSelected = true;
     if(characters.geralt.isSelected) {
@@ -76,7 +84,7 @@ $("#geralt-img").click(function (e) {
     onImgClick();
 });
 
-$("#ciri-img").click(function (e) { 
+$("#stats1").click(function (e) { 
     console.log("clicked ciri!");
     characters.ciri.isSelected = true;
    // checkIfcharacterIsChosen(characters.ciri);
@@ -86,22 +94,22 @@ $("#ciri-img").click(function (e) {
         }
     onImgClick();
 });
-$("#vesemir-img").click(function (e) { 
+$("#stats2").click(function (e) { 
+    console.log("clicked imleith!");
+    characters.imlerith.isSelected = true;
+    if(characters.imlerith.isSelected) {
+        $("#selected-character-id").html("<img id='selected-character-id' src='" + characters.imlerith.imageUrl+"' />");
+        $("#imlerith-img").hide();
+        }
+   
+    onImgClick();
+});
+$("#stats3").click(function (e) { 
     console.log("clicked vesemir!");
     characters.vesemir.isSelected = true;
     if(characters.vesemir.isSelected) {
         $("#selected-character-id").html("<img id='selected-character-id' src='" + characters.vesemir.imageUrl+"' />");
         $("#vesemir-img").hide();
-        }
-   
-    onImgClick();
-});
-$("#imlerith-img").click(function (e) { 
-    console.log("clicked imlerith!");
-    characters.imlerith.isSelected = true;
-    if(characters.imlerith.isSelected) {
-        $("#selected-character-id").html("<img id='selected-character-id' src='" + characters.imlerith.imageUrl+"' />");
-        $("#imlerith-img").hide();
         }
    
     onImgClick();
