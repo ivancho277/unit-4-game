@@ -88,8 +88,8 @@ $ (document).ready (function () {
   }
 
 
+
   //returns what character is selected and hids the original picture while moving to a new id element on the page.
-  //
   function whatCharacterIsClicked () {
     $ ('#stats0, #stats1, #stats2, #stats3').one ("click", function (e) {
       if (this.id === 'stats0') {
@@ -101,6 +101,7 @@ $ (document).ready (function () {
               characters.geralt.imageUrl +
               "' />"
           );
+          $('#main-actions').text("You chose Geralt!");
           $ ('#geralt-wrap').hide ();
           $ ('.character-text').hide ();
           
@@ -116,6 +117,7 @@ $ (document).ready (function () {
           $ ('#selected-character-id').html (
             "<img src='" + characters.ciri.imageUrl + "' />"
           );
+          $('#main-actions').text("You chose Ciri!");
           $ ('#ciri-wrap').hide ();
           $ ('.character-text').hide ();
           
@@ -131,6 +133,7 @@ $ (document).ready (function () {
               characters.imlerith.imageUrl +
               "' />"
           );
+          $('#main-actions').text("You chose Imlerith!");
           $ ('#imlerith-wrap').hide ();
           $ ('.character-text').hide ();
           
@@ -147,6 +150,7 @@ $ (document).ready (function () {
               characters.vesemir.imageUrl +
               "' />"
           );
+          $('#main-actions').text("You chose Vesemir!");
           $ ('#vesemir-wrap').hide ();
           $ ('.character-text').hide ();
           
