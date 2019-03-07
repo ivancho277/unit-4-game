@@ -37,6 +37,7 @@ let characters = {
 
 
 
+
 //audio variables
 let geraltImg = document.getElementById('geralt-img');
 let attackSound = new Audio('assets/sound/SwordsCollide.mp3');
@@ -47,11 +48,11 @@ let winningSound = new Audio('assets/sound/TaDa.mp3');
 
 
 
-$(function () {
-    $("img").click(function() {
+function changeImageBorder(CharacterString) {
+    $("#"+ CharacterString +"img").click(function() {
       $(this).css('border', "solid 5px greenyellow");  
     });
-  });
+}
 
 function onImgClick(){
     $("img").click(function() {
@@ -69,8 +70,8 @@ $("#geralt-img").click(function (e) {
     console.log("clicked geralt!");
     characters.geralt.isSelected = true;
     if(characters.geralt.isSelected) {
-        $("#opponents").html("<img src='assets/images/geralt.jpg' />");
-        $("#geralt-img").html();
+        $("#opponents").html("<img id='selected-character-id' src='" + characters.geralt.imageUrl+"' />");
+        $("#geralt-img").hide();
         }
     onImgClick();
 });
@@ -79,6 +80,10 @@ $("#ciri-img").click(function (e) {
     console.log("clicked ciri!");
     characters.ciri.isSelected = true;
    // checkIfcharacterIsChosen(characters.ciri);
+    if(characters.ciri.isSelected) {
+        $("#opponents").html("<img src='" + characters.ciri.imageUrl+"' />");
+        $("#ciri-img").hide();
+        }
     onImgClick();
 });
 $("#vesemir-img").click(function (e) { 
