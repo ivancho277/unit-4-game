@@ -118,6 +118,7 @@ $ (document).ready (function () {
           $ ('#attack-btn').html (
             "<button type='button' id='attack' class='btn btn-primary btn-lg'>Attack</button>"
           );
+          $('#game-actions').text("Slecect Defender Next!");
           $ ('#main-actions').text ('You chose Geralt!');
           $ ('#geralt-wrap').hide ();
           $ ('.character-text').hide ();
@@ -137,6 +138,7 @@ $ (document).ready (function () {
           $ ('#attack-btn').html (
             "<button type='button' id='attack' class='btn btn-primary btn-lg'>Attack</button>"
           );
+          $('#game-actions').text("Slecect Defender Next!");
           $ ('#main-actions').text ('You chose Ciri!');
           $ ('#ciri-wrap').hide ();
           $ ('.character-text').hide ();
@@ -152,6 +154,7 @@ $ (document).ready (function () {
               characters.imlerith.imageUrl +
               "' />"
           );
+          $('#game-actions').text("Slecect Defender Next!");
           $ ('#attack-btn').html (
             "<button type='button' id='attack' class='btn btn-primary btn-lg'>Attack</button>"
           );
@@ -174,6 +177,7 @@ $ (document).ready (function () {
           $ ('#attack-btn').html (
             "<button type='button' id='attack' class='btn btn-primary btn-lg'>Attack</button>"
           );
+          $('#game-actions').text("Slecect Defender Next!");
           $ ('#main-actions').text ('You chose Vesemir!');
           $ ('#vesemir-wrap').hide ();
           $ ('.character-text').hide ();
@@ -186,8 +190,8 @@ $ (document).ready (function () {
   }
 
   //atempt to only call function once when needed. WHY DO MY ONCLICK EVENTS KEEP BEING LISTENED FOR!
-var chosenone = $('body').on("click",whatCharacterIsClicked);
-  console.log ('The chosen one IS: ', chosenone);
+
+  console.log ('The chosen one IS: ', whatCharacterIsClicked ());
 
   // // function checkIfcharacterIsChosen(characters) {
   // if(characters.isSelected) {
