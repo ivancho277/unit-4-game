@@ -35,7 +35,7 @@ $ (document).ready (function () {
   };
 
   //send stats to images
-  function sendImgStats () {
+  function sendImgStats (elmentID) {
     characterArray = [
       characters.geralt,
       characters.ciri,
@@ -43,7 +43,7 @@ $ (document).ready (function () {
       characters.vesemir,
     ];
     for (var i = 0; i < characterArray.length; i++) {
-      $ ('#stats' + i).html (
+      $ (elmentID + i).html (
         '<p>' +
           characterArray[i].name +
           '<br> Health: ' +
@@ -57,7 +57,7 @@ $ (document).ready (function () {
     }
   }
   //function call
-  sendImgStats ();
+  sendImgStats ("#stats");
   //audio variables
   let geraltImg = document.getElementById ('geralt-img');
   let attackSound = new Audio ('assets/sound/SwordsCollide.mp3');
@@ -91,7 +91,7 @@ $ (document).ready (function () {
 
   //returns what character is selected and hids the original picture while moving to a new id element on the page.
   function whatCharacterIsClicked () {
-    $ ('#stats0, #stats1, #stats2, #stats3').one ("click", function (e) {
+    $ ('#stats0, #stats1, #stats2, #stats3').on ("click", function (e) {
       if (this.id === 'stats0') {
         console.log ('clicked geralt!');
         characters.geralt.isSelected = true;
@@ -101,6 +101,7 @@ $ (document).ready (function () {
               characters.geralt.imageUrl +
               "' />"
           );
+          $('#attack-btn').html("<button type='button' class='btn btn-primary btn-lg'>Attack</button>")
           $('#main-actions').text("You chose Geralt!");
           $ ('#geralt-wrap').hide ();
           $ ('.character-text').hide ();
@@ -117,6 +118,7 @@ $ (document).ready (function () {
           $ ('#selected-character-id').html (
             "<img src='" + characters.ciri.imageUrl + "' />"
           );
+          $('#attack-btn').html("<button type='button' class='btn btn-primary btn-lg'>Attack</button>")
           $('#main-actions').text("You chose Ciri!");
           $ ('#ciri-wrap').hide ();
           $ ('.character-text').hide ();
@@ -133,6 +135,7 @@ $ (document).ready (function () {
               characters.imlerith.imageUrl +
               "' />"
           );
+          $('#attack-btn').html("<button type='button' class='btn btn-primary btn-lg'>Attack</button>")
           $('#main-actions').text("You chose Imlerith!");
           $ ('#imlerith-wrap').hide ();
           $ ('.character-text').hide ();
@@ -150,6 +153,7 @@ $ (document).ready (function () {
               characters.vesemir.imageUrl +
               "' />"
           );
+          $('#attack-btn').html("<button type='button' class='btn btn-primary btn-lg'>Attack</button>")
           $('#main-actions').text("You chose Vesemir!");
           $ ('#vesemir-wrap').hide ();
           $ ('.character-text').hide ();
@@ -160,15 +164,15 @@ $ (document).ready (function () {
         return characters.vesemir;
       }
       else
-      $(this).off(e);
       return;
     });
   }
 
   //atempt to only call function once when needed.
-  if(!characters.geralt.isSelected && !characters.ciri.isSelected && !characters.vesemir.isSelected && !characters.imlerith.isSelected){
-  console.log(whatCharacterIsClicked());
-  }
+ 
+  
+  console.log("The chosen one IS: ", whatCharacterIsClicked());
+  
   // // function checkIfcharacterIsChosen(characters) {
   // if(characters.isSelected) {
   //     $("#opponents").html("<img src='" + characters.imageUrl + "' />")
